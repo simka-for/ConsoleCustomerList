@@ -19,15 +19,16 @@ public class Main
             try {
                 String command = scanner.nextLine();
                 String[] tokens = command.split("\\s+", 2);
-                if (tokens[0].equals("add")) {
+                String firstElement = tokens[0];
+                if (firstElement.equals("add") && tokens.length == 2) {
                     executor.addCustomer(tokens[1]);
-                } else if ("list".equals(tokens[0])) {
+                } else if (firstElement.equals("list")) {
                     executor.listCustomers();
-                } else if ("remove".equals(tokens[0])){
+                } else if (firstElement.equals("remove") && tokens.length == 2){
                     executor.removeCustomer(tokens[1]);
-                } else if ("count".equals(tokens[0])) {
+                } else if (firstElement.equals("count")) {
                     System.out.println("There are " + executor.getCount() + " customers");
-                } else if ("help".equals(tokens[0])){
+                } else if (firstElement.equals("help")){
                     System.out.println(helpText);
                 } else {
                     System.out.println(commandError);
